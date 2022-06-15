@@ -14,11 +14,13 @@ import com.google.gson.Gson;
 
 public class App {
 
+    private final String baseUrl = "http://jsonplaceholder.typicode.com/todos/";
+
     public List<Todo> readAllTodos() throws URISyntaxException, IOException, InterruptedException {
 
         var request = HttpRequest
                 .newBuilder()
-                .uri(new URI("http://jsonplaceholder.typicode.com/todos"))
+                .uri(new URI(baseUrl))
                 .GET()
                 .build();
 
@@ -34,7 +36,7 @@ public class App {
 
         HttpRequest request = HttpRequest
                 .newBuilder()
-                .uri(new URI("http://jsonplaceholder.typicode.com/todos/" + id))
+                .uri(new URI(baseUrl + id))
                 .GET()
                 .build();
 
@@ -49,7 +51,7 @@ public class App {
     public Todo createTodo(Todo aTodo) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
-                .newBuilder(new URI("http://jsonplaceholder.typicode.com/todos"))
+                .newBuilder(new URI(baseUrl))
                 .headers("content-type", "application/json")
                 .POST(BodyPublishers.ofString(new Gson().toJson(aTodo)))
                 .build();
@@ -63,7 +65,7 @@ public class App {
     public int deleteTodo(int id) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
-                .newBuilder(new URI("http://jsonplaceholder.typicode.com/todos/" + id))
+                .newBuilder(new URI(baseUrl + id))
                 .DELETE()
                 .build();
 
@@ -76,7 +78,7 @@ public class App {
     public Todo updateTodo(Todo aTodo) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
-                                .newBuilder(new URI("http://jsonplaceholder.typicode.com/todos/" + aTodo.getId()))
+                                .newBuilder(new URI(baseUrl + aTodo.getId()))
                                 .headers("content-type", "application/json")
                                 .PUT(BodyPublishers.ofString(new Gson().toJson(aTodo)))
                                 .build();
