@@ -26,7 +26,7 @@ class DemoApplicationTests {
 	public void readAllTodos() {
 		
 		var todos = retriever
-						.readAllTodos()
+						.readAll()
 						.toStream()
 						.collect(Collectors.toList());
 
@@ -38,7 +38,7 @@ class DemoApplicationTests {
 	public void readSingleTodo() {
 		
 		var todo = retriever
-						.readSingleTodo()
+						.readSingle(1)
 						.block();
 		
 		assertNotNull(todo);
@@ -49,7 +49,7 @@ class DemoApplicationTests {
 	public void createTodo() {
 		
 		var todo = retriever
-						.createTodo(new Todo(10, 10, "To test the app", false))
+						.create(new Todo(10, 10, "To test the app", false))
 						.block();
 		
 		assertNotNull(todo);
@@ -60,7 +60,7 @@ class DemoApplicationTests {
 	public void deleteTodo() {
 		
 		var response = retriever
-						.deleteTodo(1)
+						.delete(1)
 						.block();
 
 		assertTrue(response.getStatusCode().is2xxSuccessful());
@@ -70,7 +70,7 @@ class DemoApplicationTests {
 	public void updateTodo() {
 		
 		var todo = retriever
-						.updateTodo(new Todo(1, 1, "To test the app", false))
+						.update(new Todo(1, 1, "To test the app", false))
 						.block();
 
 		assertNotNull(todo);
