@@ -12,11 +12,11 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-public class App {
+public class TodoRetriever {
 
     private final String baseUrl = "http://jsonplaceholder.typicode.com/todos/";
 
-    public List<Todo> readAllTodos() throws URISyntaxException, IOException, InterruptedException {
+    public List<Todo> readAll() throws URISyntaxException, IOException, InterruptedException {
 
         var request = HttpRequest
                 .newBuilder()
@@ -32,7 +32,7 @@ public class App {
         return List.of(todos);
     }
 
-    public Todo readTodo(int id) throws URISyntaxException, IOException, InterruptedException {
+    public Todo readSingle(int id) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
                 .newBuilder()
@@ -48,7 +48,7 @@ public class App {
         return todo;
     }
 
-    public Todo createTodo(Todo aTodo) throws URISyntaxException, IOException, InterruptedException {
+    public Todo create(Todo aTodo) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
                 .newBuilder(new URI(baseUrl))
@@ -62,7 +62,7 @@ public class App {
         return new Gson().fromJson(response.body(), Todo.class);
     }
 
-    public int deleteTodo(int id) throws URISyntaxException, IOException, InterruptedException {
+    public int delete(int id) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
                 .newBuilder(new URI(baseUrl + id))
@@ -75,7 +75,7 @@ public class App {
         return response.statusCode();
     }
 
-    public Todo updateTodo(Todo aTodo) throws URISyntaxException, IOException, InterruptedException {
+    public Todo update(Todo aTodo) throws URISyntaxException, IOException, InterruptedException {
 
         HttpRequest request = HttpRequest
                                 .newBuilder(new URI(baseUrl + aTodo.getId()))

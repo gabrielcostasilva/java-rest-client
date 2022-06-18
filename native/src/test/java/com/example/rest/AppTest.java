@@ -17,20 +17,20 @@ import org.junit.jupiter.api.TestInstance;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AppTest {
 
-    private App restApp;
+    private TodoRetriever restApp;
 
     @BeforeAll
     public void setup() throws URISyntaxException {
-        restApp = new App();
+        restApp = new TodoRetriever();
 
     }
 
     @Test
     public void readAllTodos() throws Exception {
         
-        assertDoesNotThrow(() -> restApp.readAllTodos());
+        assertDoesNotThrow(() -> restApp.readAll());
         
-        List<Todo> todos = restApp.readAllTodos();
+        List<Todo> todos = restApp.readAll();
         
         assertNotNull(todos);
         assertNotEquals(0, todos.size());
@@ -39,9 +39,9 @@ public class AppTest {
 
     @Test
     public void readSingleTodo() throws URISyntaxException, IOException, InterruptedException {
-        assertDoesNotThrow(() -> restApp.readTodo(1));
+        assertDoesNotThrow(() -> restApp.readSingle(1));
 
-        Todo todo = restApp.readTodo(1);
+        Todo todo = restApp.readSingle(1);
 
         assertNotNull(todo);
         assertEquals(1, todo.getId());
@@ -52,9 +52,9 @@ public class AppTest {
 
         Todo aTodo = new Todo(0, 0, "To read book", "To buy a top rated book to read");
 
-        assertDoesNotThrow(() -> restApp.createTodo(aTodo));
+        assertDoesNotThrow(() -> restApp.create(aTodo));
 
-        Todo createdTodo = restApp.createTodo(aTodo);
+        Todo createdTodo = restApp.create(aTodo);
 
         assertNotNull(createdTodo);
         assertNotEquals(0, createdTodo.getId());
@@ -63,8 +63,8 @@ public class AppTest {
     @Test
     public void deleteTodo() throws Exception {
 
-        assertDoesNotThrow(() -> restApp.deleteTodo(1));
-        assertEquals(200, restApp.deleteTodo(1));
+        assertDoesNotThrow(() -> restApp.delete(1));
+        assertEquals(200, restApp.delete(1));
     }
 
     @Test
@@ -72,9 +72,9 @@ public class AppTest {
 
         Todo aTodo = new Todo(0, 1, "To read book", "To buy a top rated book to read");
 
-        assertDoesNotThrow(() -> restApp.updateTodo(aTodo));
+        assertDoesNotThrow(() -> restApp.update(aTodo));
 
-        Todo updatedTodo = restApp.updateTodo(aTodo);
+        Todo updatedTodo = restApp.update(aTodo);
         assertEquals(aTodo.getTitle(), updatedTodo.getTitle());
     }
 }
