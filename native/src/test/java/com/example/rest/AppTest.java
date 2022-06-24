@@ -50,7 +50,7 @@ public class AppTest {
     @Test
     public void createTodo() throws URISyntaxException, IOException, InterruptedException {
 
-        Todo aTodo = new Todo(0, 0, "To read book", "To buy a top rated book to read");
+        Todo aTodo = new Todo(0, 0, "To read book", false);
 
         assertDoesNotThrow(() -> restApp.create(aTodo));
 
@@ -70,7 +70,7 @@ public class AppTest {
     @Test
     public void updateTodo() throws Exception {
 
-        Todo aTodo = new Todo(0, 1, "To read book", "To buy a top rated book to read");
+        Todo aTodo = new Todo(0, 1, "To read book", true);
 
         assertDoesNotThrow(() -> restApp.update(aTodo));
 

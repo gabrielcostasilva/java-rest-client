@@ -12,6 +12,6 @@ public class Todo {
     private int userId;
     private int id;
     private String title;
-    private String body;
+    private boolean completed;
 } 
 
