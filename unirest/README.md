@@ -69,5 +69,3 @@ There is no need for additional dependencies other than the Unirest library. Eve
 In addition, we use `org.projectlombok.lombok` library to simplify the POJO TODO management.
 
 Note that JUnit 5 libraries are also in the project to enable testing.
-
-## Further Reference
