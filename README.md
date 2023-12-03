@@ -13,3 +13,5 @@ Each folder groups a single REST client as follows:
 - [_Unirest_](./unirest/) uses the Java version of the [Unirest library](http://kong.github.io/unirest-java/) to perform REST calls.
 
 - [_RestClient Web_](./restclient-web/) features the newest Spring Rest Client for Web apps (> SB 3.2).
+
+- [_RestClient Web - Interface_](./restclient-web-interface/) based on the [_RestClient Web_](./restclient-web/), this project explores a simpler way of building REST clients by using interfaces.
