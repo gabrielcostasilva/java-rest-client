@@ -1,6 +1,8 @@
 # Java REST Client Examples
 This repository groups examples of using different REST Java clients. Examples use the [JSON Placeholder](https://jsonplaceholder.typicode.com) TODO fake API as a target for CRUD operations.
 
+> You may want to explore the [Spring Boot Webclient](https://github.com/gabrielcostasilva/sb-rest-webclient.git) if you use Spring Boot.
+
 ## Overview of Projects
 Each folder groups a single REST client as follows:
 
@@ -12,10 +14,3 @@ Each folder groups a single REST client as follows:
 
 - [_Unirest_](./unirest/) uses the Java version of the [Unirest library](http://kong.github.io/unirest-java/) to perform REST calls.
 
-- [_RestClient Web_](./restclient-web/) features the newest Spring Rest Client for Web apps (> SB 3.2).
-
-- [_RestClient Web - Interface_](./restclient-web-interface/) based on the [_RestClient Web_](./restclient-web/), this project explores a simpler way of building REST clients by using interfaces.
-
-- [_RestClient Web - Interface HEADERS_](./restclient-web-interface-headers) extends the [_RestClient Web - Interface_](./restclient-web-interface/) to show how to access request header data.
-
-- [_RestClient Test_](./rest-client-test/) tests a REST Client using a MockServer and @RestClientTest. 
